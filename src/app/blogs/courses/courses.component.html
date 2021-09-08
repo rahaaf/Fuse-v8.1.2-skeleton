@@ -1,0 +1,92 @@
+<div id="academy-courses" class="page-layout simple">
+
+    <!-- HEADER -->
+    <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
+
+        <div class="hero-text">
+            <h1 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+               مقالاتنا
+            </h1>
+            <h3 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+               ستوجهك مقالاتنا لمعرفة فوائد الخضار والفواكه وميزة كل نوع ومعرفة الفيتامينات
+               التي ستوفرها لك كما ستتعرف على الكثير من الأطباق التي يمكنك صنعها بسهولة في منزلك
+            </h3>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <div fxLayout="column" fxLayoutAlign="center">
+
+            <div class="filters" fxLayout="column" fxLayoutAlign="center center"
+                 fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+
+                <mat-form-field appearance="outline" floatLabel="always" class="course-search">
+                    <mat-label>البحث عن مقالة</mat-label>
+                    <input matInput placeholder="Enter a keyword..."
+                           [(ngModel)]="searchTerm"
+                           (input)="filterCoursesByTerm()">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="category-selector">
+                    <mat-label>الفئة</mat-label>
+                    <mat-select [(ngModel)]="currentCategory"
+                                (selectionChange)="filterCoursesByCategory()">
+                        <mat-option [value]="'all'">
+                            الكل
+                        </mat-option>
+                        <mat-option *ngFor="let category of categories" [value]="category.value">
+                            {{ category.label }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+
+            <div class="courses" fxLayout="row wrap" fxLayoutAlign="center" [@animateStagger]="{value:'50'}">
+
+                <div class="course" *ngFor="let course of filteredCourses" fxFlex="100" fxFlex.gt-xs="50"
+                     fxFlex.gt-sm="33" [ngClass]="course.category" [@animate]="{value:'*',params:{y:'100%'}}">
+
+                    <div class="course-content" fxLayout="column" fxFlex="1 1 auto">
+
+                        <div class="header" fxLayout="row" fxLayoutAlign="center center"
+                             [ngClass]="course.category + '-bg'">
+
+                            <div class="category" fxFlex>
+                                {{course.category}}
+                            </div>
+
+                        </div>
+
+                        <div class="content" fxLayout="column" fxLayoutAlign="center center" fxFlex="1 1 auto">
+                            <div class="h1">{{course.title}}</div>
+                            <div class="updated">اخر تحديث {{course.updated}}</div>
+                        </div>
+
+                        <div class="footer" fxLayout="row" fxLayoutAlign="center center">
+                            <button mat-button color="accent"
+                                    [routerLink]="'/blogs/courses/' + course.id + '/' + course.slug">
+                               ابدأ
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="no-courses" *ngIf="filteredCourses.length === 0">
+                    المقال غير موجود!
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

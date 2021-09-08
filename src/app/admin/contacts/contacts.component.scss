@@ -1,0 +1,58 @@
+@import "src/@fuse/scss/fuse";
+contacts{
+   
+    width: 100% !important;
+}
+#contacts {
+ 
+    margin-top:-46px;
+    display: block;
+    width: 100%;
+
+    .header {
+
+        .search-wrapper {
+            width: 100%;
+            max-width: 480px;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid #FF9F68 !important;
+
+            @include mat-elevation(1);
+
+            .search {
+                width: 100%;
+                height: 48px;
+                line-height: 48px;
+                padding: 0 18px;
+                color: #FF9F68;
+
+
+                input {
+                    width: 100%;
+                    height: 48px;
+                    min-height: 48px;
+                    max-height: 48px;
+                    padding: 0 16px;
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+        .logo{
+            margin-right: 50px;
+            color: #FF9F68;
+        }
+    }
+
+    .content {
+        overflow: hidden;
+
+        .sidebar {
+
+            &:not(.locked-open) {
+                background: white;
+            }
+        }
+    }
+}

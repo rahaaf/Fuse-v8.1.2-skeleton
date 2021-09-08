@@ -1,0 +1,63 @@
+<div id="forgot-password" class="inner-scroll" fxLayout="row" fxLayoutAlign="start">
+
+    <div id="forgot-password-intro" fxFlex fxHide fxShow.gt-xs>
+
+        <!-- <div class="LOGO" [@animate]="{value:'*',params:{scale:'0.2'}}">
+            <a   routerLink="home" > 
+                <img src="../../assets/images/logos/logo.png" alt="">
+            </a>
+        </div> -->
+
+        <div class="title" [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}">
+         مرحباً بك في معرض فروتس
+        </div>
+
+        <!-- <div class="description" [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ullamcorper nisl erat,
+            vel convallis elit fermentum pellentesque. Sed mollis velit facilisis facilisis viverra.
+        </div> -->
+
+    </div>
+
+    <div id="forgot-password-form-wrapper" fusePerfectScrollbar
+         [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}">
+
+        <div id="forgot-password-form">
+
+            <div class="LOGO" fxHide.gt-xs>
+                <a   routerLink="home" > 
+                    <img src="../../assets/images/logos/logo.png" alt="">
+                </a>
+                 <!-- <img src="assets/images/logos/fuse.svg">  -->
+            </div>
+
+            <div class="title">إعادة تعين كلمة السر</div>
+
+            <form name="forgoPasswordForm" [formGroup]="forgotPasswordForm" novalidate>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>رقم الهاتف</mat-label>
+                    <input matInput formControlName="phon">
+                    <mat-icon matPrefix class="secondary-text">smartphone</mat-icon>
+                    <mat-error *ngIf="forgotPasswordForm.get('phon').hasError('required')">
+                        Phon is required
+                    </mat-error>
+                    <mat-error *ngIf="forgotPasswordForm.get('phon').hasError('phon')">
+                        Please enter a valid phon address
+                    </mat-error>
+                </mat-form-field>
+
+                <button mat-raised-button class="submit-button" color="accent"
+                        aria-label="SEND RESET LINK" [disabled]="forgotPasswordForm.invalid">
+                   إعادة ارسال الرابط
+                </button>
+
+            </form>
+
+            <div class="login" fxLayout="row" fxLayoutAlign="center center">
+                <a class="link" [routerLink]="'/auth/login'">تسجيل الدخول</a>
+            </div>
+
+        </div>
+    </div>
+</div>

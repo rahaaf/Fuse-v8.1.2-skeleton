@@ -1,0 +1,179 @@
+@import "src/@fuse/scss/fuse";
+ // all product ****************************
+
+ #academy-courses {
+    
+    .header {
+        position: relative;
+        flex: 1 0 auto;
+        height: 280px;
+        max-height: 280px;
+        text-align: center;
+        overflow: hidden;
+
+        @include media-breakpoint('xs') {
+            height: 240px;
+            padding: 16px;
+        }
+
+        .hero-text {
+
+            h1 {
+                font-size: 40px;
+                font-weight: 300;
+                letter-spacing: 0.01em;
+                text-align: center;
+                margin-bottom: 263px;
+                color: #FF9F68;
+
+                @include media-breakpoint('xs') {
+                    font-size: 24px;
+                }
+            }
+            }
+        }
+    }
+
+    .content {
+
+        .Product{
+     
+            h1{
+                text-align: center;
+                font-size:30px;
+                 color:#FF9F68;
+                padding-top:100px;
+                font-weight: bold;
+                margin-bottom: 15px;
+            }
+            mat-divider{
+                width:155px;
+                margin-left:600px;
+                margin-bottom: 50px;
+                background-color: #FF9F68;
+            
+            }
+            .example{
+                text-align: center;
+                margin-bottom:90px;
+              
+            }
+            .example :hover{
+                color: #FF9F68;
+            }
+        
+            .example button{
+                font-size:22px;
+                font-weight: bold;
+                left: 15px;
+            }
+            // .card .card-preview :hover{
+            //     border: none;
+            //     transition: box-shadow 200ms ease-in-out;
+            //     box-shadow: 0px 7px 8px -4px rgb(0 0 0 / 20%), 
+            //     0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%);
+            // }
+            .card {
+                margin-left:60px;
+                padding-left:50px;
+                display:inline-block;
+               
+                
+                .card-preview {
+                    width:215px;
+                    height:120%;
+                    padding-bottom:50px;
+        
+                }
+                .namepro{
+                  text-align: center;
+                  color: black;
+                  font-size:18px;
+                  margin-bottom: 10px;
+                }
+                .namepro:hover{
+                  color:#FF9F68;
+                }
+                .counter {
+                    width: 150px;
+                    margin: auto;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #FF9F68;
+        
+        
+                }
+                .counter button {
+                    display: block;
+                    font-size:20px;
+                    font-weight: bold;
+                    padding: 0 10px;
+                    cursor: pointer;
+                    user-select: none;
+                    background-color:white;
+                    color: #FF9F68;
+                    border: 0;
+                }
+                img{
+                    border-radius:6px;
+                    width:100%;
+                    height:160px;
+                    object-fit: cover;
+                    
+        
+                }
+               
+              
+                .price{
+                    font-size:15px;
+                    direction: rtl;
+                    text-align:center;
+                    mat-icon{
+                        background-color: white;
+                        color: #FF9F68;
+                    }
+                }
+                
+                .px-16{
+                    margin-left:5px;
+                    .mat-button{
+                        background-color: #FF9F68;
+                        color: white;
+                        font-size:13px;
+                    }
+                     
+                        input{
+                            padding: 5px;
+                            border: 1px solid wheat;
+                            margin-bottom: 10px;
+                        }
+                    
+                }
+                     
+                   
+                   
+               
+                
+               
+            }
+        }
+        
+        .view{
+            button{
+                padding:6px;
+                border-radius:15px;;
+                margin-left:600px;
+                text-align: center;
+                background-color: #FF9F68;
+                color: white;
+                font-size:22px;
+                letter-spacing:2.5px;
+                margin-bottom:60px;
+        
+            }
+         
+        } 
+    }
+
+ 

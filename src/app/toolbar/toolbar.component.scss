@@ -1,0 +1,63 @@
+:host {
+    position: fixed;
+    z-index: 999;
+}
+
+.example-container {
+    background-color: white;
+}
+
+.header {
+    position: fixed;
+   width:70%; 
+    top: 10px;
+}
+
+mat-toolbar {
+    position: relative;
+    border-radius: 100px;
+    background-color: #fff;
+    border: 1px solid #FF9F68;
+    margin-left:20%;
+}
+
+.mat-button,
+.mat-icon-button,
+.mat-stroked-button,
+.mat-flat-button {
+    font-size: 15px;
+    margin-left: 10px;
+   
+
+}
+
+.LOGO {
+    color: #FF9F68;
+    font-size: 40px;
+    font-weight: bold;
+   
+    text-decoration: none;
+    img{
+        max-width: 150px;
+    }
+}
+
+.mat-button:hover {
+    color: #FF9F68;
+
+}
+
+.menu {
+    font-size: 15px;
+
+}
+
+.menu:hover {
+    color: #FF9F68;
+}
+
+
+.mat-menu-item{
+    font-family: 'Tajawal', sans-serif;
+
+text-align: right;}

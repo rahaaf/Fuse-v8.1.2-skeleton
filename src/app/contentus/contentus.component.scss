@@ -1,0 +1,61 @@
+.contactus{
+    background-color: rgb(249, 249, 249);
+    h1{
+        padding-top:150px;
+        text-align: center;
+        font-size:30px;
+        color:#FF9F68;
+        margin-bottom:10px;
+        font-weight: bold; 
+    }
+    mat-divider{
+        width:155px;
+        margin-left:600px;
+        background-color: #FF9F68;
+        margin-bottom:50px;
+    }
+    .form{
+        text-align: center;
+        margin-top:25px;
+        margin-left:60px;
+        
+    }
+    .mat-form-field{
+        width:55%;
+        padding-bottom:10px; 
+        margin-left:10px;
+        border: 0 solid white;
+    
+    }
+    
+    .mat-form-field input  {
+        font-size: 14px;
+        padding-left:8px;
+        height:20px;
+        width:150px;
+        margin-left: 628px;
+       
+    } 
+    .mat-form-field.messag{
+        width:55%;
+        font-size: 14px;
+    }
+  
+    .form .send{
+        padding:10px;
+        background-color:#FF9F68;
+        border-radius: 30px;
+        border: 0 solid white;    
+        color:#fff;
+        margin-left:15px;
+        margin-bottom:100px;
+    }
+    
+    
+    
+}
+textarea.mat-input-element{
+    margin-left: 662px;
+   
+
+}

@@ -1,0 +1,84 @@
+<div id="login" class="inner-scroll" fxLayout="row" fxLayoutAlign="start">
+
+    <div id="login-intro" fxFlex fxHide fxShow.gt-xs>
+
+        <!-- <div class="LOGO" [@animate]="{value:'*',params:{scale:'0.2'}}">
+            <a   routerLink="home" > 
+                <img src="../../assets/images/logos/logo.png" alt="">
+            </a>
+        </div> -->
+
+        <div class="title" [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}">
+         مرحباً بك في معرض فروتس
+        </div>
+
+       
+
+    </div>
+
+    <div id="login-form-wrapper" fusePerfectScrollbar
+         [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}">
+
+        <div id="login-form">
+
+            <div class="LOGO" fxHide.gt-xs>
+                <a   routerLink="home" > 
+                    <img src="../../assets/images/logos/logo.png" alt="">
+                </a>
+                <!-- <img src="assets/images/logos/fuse.svg">  -->
+            </div>
+
+            <div class="title">تسجيل دخول إلى حسابك</div>
+
+            <form name="loginForm" [formGroup]="loginForm" novalidate>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>البريد الإلكتروني</mat-label>
+                    <input matInput  formControlName="email">
+                    <mat-icon matPrefix class="secondary-text">email</mat-icon>
+                    <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                        Email is required
+                    </mat-error>
+                    <mat-error
+                        *ngIf="!loginForm.get('email').hasError('required') &&
+                                loginForm.get('email').hasError('email')">
+                        Please enter a valid Email address
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>كلمة السر</mat-label>
+                    <input matInput  type="password" formControlName="password">
+                    <mat-icon matPrefix class="secondary-text">vpn_key</mat-icon>
+                    <!-- <mat-error>
+                        Password is required
+                    </mat-error> -->
+                    
+                </mat-form-field>
+
+                <div class="remember-forgot-password" fxLayout="row" fxLayout.xs="column"
+                     fxLayoutAlign="space-between center">
+                    <mat-checkbox class="remember-me" aria-label="Remember Me">
+                       تذكرني
+                    </mat-checkbox>
+                    <a class="forgot-password" [routerLink]="'/auth/forgetpass'">
+                       هل نسيت كلمة السر؟
+                    </a>
+                </div>
+
+                <button  mat-raised-button    class="submit-button" aria-label="LOGIN"
+                        [disabled]="loginForm.invalid" (click)="login()">
+                   تسجيل دخول
+                </button>
+
+            </form>
+
+            
+            <div class="register" fxLayout="column" fxLayoutAlign="center center">
+                <span class="text">أنت لا تملك حساب ؟</span>
+                <a class="link" [routerLink]="'/auth/register'">إنشاء حساب</a>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,175 @@
+<div id="stors" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0"
+                 fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                   المتاجر
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="إبحث  عن متجر">
+                </div>
+            </div>
+            <!-- / SEARCH -->
+
+            <!-- ADD BUTTON -->
+            <button mat-raised-button
+                    [routerLink]="'/dashboard/store/stors/new'"
+                    class="add-stor-button fuse-white mt-24 mt-md-0">
+                <span>إضافة متجر</span>
+            </button>
+            <!-- / ADD BUTTON -->
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <mat-table class="stors-table"
+                       #table [dataSource]="dataSource"
+                       matSort
+                       [@animateStagger]="{value:'50'}"
+                       fusePerfectScrollbar>
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>رقم المتجر</mat-header-cell>
+                    <mat-cell *matCellDef="let stor , let i = index">
+                        <p class="text-truncate">{{i+1}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Image Column
+                <ng-container matColumnDef="image">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let stor">
+                        <img class="stor-image"
+                             *ngIf="stor.featuredImageId" [alt]="stor.name"
+                             [src]="stor.images[stor.featuredImageId].url"/>
+                        <img *ngIf="!stor.featuredImageId"
+                             [src]="'assets/images/ecommerce/stor-image-placeholder.png'">
+                    </mat-cell>
+                </ng-container> -->
+
+                <!-- NameOwner Column -->
+                <ng-container matColumnDef="nameOwner">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>صاحب المتجر</mat-header-cell>
+                    <mat-cell *matCellDef="let stor">
+                        <p class="text-truncate">{{stor.nameOwner}}</p>
+                    </mat-cell>
+                </ng-container>
+
+             
+
+                 <!-- Address Column -->
+                 <ng-container matColumnDef="address">
+                    <mat-header-cell *matHeaderCellDef fxHide mat-sort-header fxShow.gt-md>عنوان المتجر</mat-header-cell>
+                    <mat-cell *matCellDef="let stor" fxHide fxShow.gt-md>
+                        <p class="address text-truncate">
+                            {{stor.address}}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- products Column-->
+                <!-- <ng-container matColumnDef="products">
+                    <mat-header-cell *matHeaderCellDef fxHide mat-sort-header fxShow.gt-md>Products</mat-header-cell>
+                    <mat-cell *matCellDef="let stor" fxHide fxShow.gt-md>
+                        <p class="product text-truncate">
+                            {{stor.id}}
+                        </p>
+                        <img [src]="stor.image" />
+
+                        <p class="product-truncate">{{stor.nameproduct}}</p>
+                        <p class="price text-truncate">
+                            {{stor.price | currency:'USD':'symbol'}}
+                        </p>
+                        <span class="quantity-indicator text-truncate"
+                              [ngClass]="{'red-500':stor.quantity <= 5, 'amber-500':stor.quantity > 5 && stor.quantity <= 25,'green-600':stor.quantity > 25}">
+                        </span>
+                        <span>
+                            {{stor.quantity}}
+                        </span>
+                        <p class="product-truncate">{{stor.weight}}</p>
+
+                    </mat-cell>
+                </ng-container> -->
+
+                <!-- Price Column -->
+                <!-- <ng-container matColumnDef="products">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>products</mat-header-cell>
+                    <mat-cell *matCellDef="let stor" fxHide fxShow.gt-xs>
+                        <p class="price text-truncate">
+                            {{stor.nameproduct}}
+                        </p>
+                    </mat-cell>
+                </ng-container> -->
+
+                <!-- Quantity Column 
+                  <ng-container matColumnDef="quantity">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Quantity</mat-header-cell>
+                    <mat-cell *matCellDef="let stor" fxHide fxShow.gt-sm>
+
+                        <span class="quantity-indicator text-truncate"
+                              [ngClass]="{'red-500':stor.quantity <= 5, 'amber-500':stor.quantity > 5 && stor.quantity <= 25,'green-600':stor.quantity > 25}">
+                        </span>
+                        <span>
+                            {{stor.quantity}}
+                        </span>
+
+                    </mat-cell>
+                </ng-container> -->
+
+                <!-- Active Column -->
+                <ng-container matColumnDef="active">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>نشاط المتجر</mat-header-cell>
+                    <mat-cell *matCellDef="let stor" fxHide fxShow.gt-xs>
+                        <mat-icon *ngIf="stor.active" class="active-icon green-600 s-16">check</mat-icon>
+                        <mat-icon *ngIf="!stor.active" class="active-icon red-500 s-16">close</mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+                <mat-row *matRowDef="let stor; columns: displayedColumns;"
+                         class="stor"
+                         matRipple
+                         [routerLink]="'/dashboard/store/stors/'+stor.id+'/'+stor.handle">
+                </mat-row>
+
+            </mat-table>
+
+            <mat-paginator #paginator
+                           [length]="dataSource.filteredData.length"
+                           [pageIndex]="0"
+                           [pageSize]="10"
+                           [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator>
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

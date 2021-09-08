@@ -1,0 +1,63 @@
+
+<!-- all product -->
+<div id="academy-courses" class="page-layout simple">
+
+    <!-- HEADER -->
+    <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
+  
+        <div class="hero-text">
+            <h1 >
+             مفضلتي
+            </h1>
+        </div>
+  
+    </div>
+    <!-- / HEADER -->
+  
+    <!-- CONTENT -->
+    <div class="content p-24">
+  
+        <div fxLayout="column" fxLayoutAlign="center">
+  
+            <div class="filters" fxLayout="column" fxLayoutAlign="center center"
+                 fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+  
+                
+            <div class="Product">
+            
+                  <!-- CARD 13 -->
+                  <div class="card" *ngFor="let fav of favorite">
+              
+                    <!-- PREVIEW -->
+                    <div class="card-preview" >
+              
+                        <div class="fuse-card variable-width">
+              
+                            <div class="position-relative" >
+                                <img [src]="fav.image">
+                                  <div class="namepro">
+                                    {{fav.productname}}
+                                </div>
+                            </div>
+
+                              <div  class="price">
+                                <span> {{fav.price}}<span>ل.س</span></span>
+                                <button mat-icon-button >
+                                  <mat-icon >favorite</mat-icon>
+                              </button> 
+                              </div>
+              
+                        </div>
+              
+                    </div>
+                    <!-- / PREVIEW -->
+                </div>
+                <!-- / CARD 13 -->
+              </div>
+            
+              <!-- button view  more -->
+            <div class="view">
+                <button mat-button>عرض المزيد</button>
+              </div>
+        </div>
+  

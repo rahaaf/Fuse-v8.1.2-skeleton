@@ -1,0 +1,5 @@
+<div>
+    <button mat-icon-button (click)="openDialog()" >
+        <mat-icon [matBadge]="( cart |async ).items.length-1" matBadgeColor="warn" [matBadgeHidden]="( cart |async ).items.length <= 0" >shopping_cart</mat-icon>
+    </button>
+</div>

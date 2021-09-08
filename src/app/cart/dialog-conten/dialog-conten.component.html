@@ -1,0 +1,59 @@
+<ng-container  *ngIf="products.length != 0">
+
+  <h2 mat-dialog-title>السلة</h2>
+  <div mat-dialog-content class="mat-typography">
+  
+      <table class="table">
+   
+         <thead>
+           <tr>
+             <th>رقم المنتج</th>
+             <th>اسم المنتج</th>
+             <th>كمية المنتج</th>
+             <th>سعر المنتج</th>
+             <th>خيارات</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr *ngFor="let item of products; let i = index">
+             <td style="width:25%">{{i+1}}</td>
+             <td  style="width:25%">{{item.productname}}</td>
+             <td  style="width:25%">{{item.amount}}</td>
+             <td  style="width:25%">{{item.price}}</td>
+             <td mat-dialog-actions> 
+              <button (click)="removeItem(item)" mat-button mat-dialog-delete>حذف</button>
+            </td>
+           </tr>
+         </tbody>
+
+      </table>
+  
+  
+  </div>
+  <div mat-dialog-actions [align]="end">
+
+    <button mat-button  mat-dialog-close (click)="buy()">تأكيد الطلب</button>
+    <strong >PriceTotal : ل.س{{grandTotal}}</strong>
+    <button class="btn" mat-button  mat-dialog-close>إلغاء</button>
+  </div>
+
+</ng-container>
+<ng-container *ngIf="products.length == 0">
+
+  <h2 mat-dialog-title>السلة</h2>
+  <div mat-dialog-content class="mat-typography">
+  
+      <h4>هذه السلة فاضية</h4>
+      <h5>اضف منتجات الآن </h5>
+      <button click mat-button routerLink ="/products" mat-dialog-close>تسوق الآن</button>
+  
+  
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>إلغاء</button>
+  </div>
+
+</ng-container>
+
+
+

@@ -1,0 +1,62 @@
+<div class="contaner">
+    <div class="header">
+        <mat-toolbar>
+            <a   routerLink="home" class="LOGO"> 
+                <img src="../../assets/images/logos/logo.png" alt="">
+            </a>
+                <div class="spacer"></div>
+            <button mat-button routerLink="home">الرئيسية</button>
+            <button mat-button routerLink="products" >المعرض</button>
+            <button mat-button routerLink="blogs"  >مقالات</button>
+            <button mat-button routerLink="faq"  >أسئلة شائعة</button>
+             <button mat-button routerLink="contentus">تواصل معنا</button>
+
+             
+           <ng-container  *ngIf="(userType |async)">
+            <button  mat-icon-button [matMenuTriggerFor]="menu"> <mat-icon>account_circle</mat-icon></button>
+            <mat-menu #menu="matMenu">
+                <button *ngIf="(userType | async)?.type == 3"  mat-menu-item routerLink="user-order">طلباتي</button>
+                <button  *ngIf="(userType | async)?.type == 0" mat-menu-item routerLink="dashboard">الإدارة</button>
+                <button  *ngIf="(userType | async)?.type == 2" mat-menu-item routerLink="dashboardd">المتجر</button>
+                <button  *ngIf="(userType | async)?.type == 1" mat-menu-item routerLink="dashboard-delevary">توصيل الطلبات</button>
+                <button    mat-menu-item (click)="SignOut()">
+                    تسجيل الخروج
+                  </button>
+            </mat-menu>
+
+           </ng-container>
+           
+       
+
+            <ng-container *ngIf="!(userType |async)">
+                <button mat-icon-button [matMenuTriggerFor]="userProfile" >
+                    <mat-icon>account_circle</mat-icon>
+                </button>
+                <mat-menu #userProfile="matMenu">
+                    <button  mat-menu-item  routerLink="auth/login">
+                        تسجيل الدخول
+                    </button>
+                    <button
+                    mat-menu-item
+                        routerLink="auth/register"
+                    >
+                        التسجيل
+                    </button>
+                </mat-menu>
+            
+            </ng-container>
+          
+          
+           
+          
+           <ng-container *ngIf="(userType |async)">
+               
+               <app-cart></app-cart>
+
+           </ng-container>
+
+      
+        </mat-toolbar>
+    </div>
+    
+</div>

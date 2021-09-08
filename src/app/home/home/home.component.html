@@ -1,0 +1,115 @@
+<carousel
+    [height]="475"
+     
+    [objectFit]="'cover'"
+    [cellWidth]="'100%'"
+    [arrowsOutside]="false"
+    [autoplay]="true"
+    [arrowsTheme]="'dark'"
+    [loop]="true"
+    style="z-index: 0 !important"
+>
+    
+    <div class="carousel-cell " style="width: 100%;" *ngFor="let item of items">
+        <img class="car " src="./assets/images/caru/{{ item }}.webp" />
+    </div>
+   
+</carousel>
+
+<div *ngIf="vegtables.length > 0" class="all">
+  <div class="v">
+      <div class="vegtable">
+          <h1>خضار</h1>
+        </div>
+      <carousel class="caro"
+      style='z-index:0!important'>
+          
+          <div [routerLink]="[ '/products']"  class="carousel-cell" *ngFor="let product of vegtables">
+              <img src="assets/images/allproducts/{{product.image}}.webp">
+                <div class="cell-info">
+                  <span >{{product.name}}</span>
+                </div>
+              
+          </div>
+      </carousel>
+  </div>
+
+  <div class="f">
+      <div class="Frutis">
+          <h1>فواكه</h1>    
+        </div>
+      <carousel  class="caro" style='z-index:0!important'>
+            <div  [routerLink]="[ '/products']" class="carousel-cell" *ngFor="let fru of frutis">
+              <img src="assets/images/allproducts/{{fru.image}}.webp">
+              <div class="cell-info">
+                <span>{{fru.name}}</span>
+              </div>    
+                  
+            </div>
+      </carousel>
+  </div>
+
+  <div class="l">
+    <div class="leaves">
+        <h1>ورقيات</h1>    
+      </div>
+    <carousel  class="caro" style='z-index:0!important'>
+          <div  [routerLink]="[ '/products']" class="carousel-cell" *ngFor="let leave of Leaves">
+            <img src="assets/images/allproducts/{{leave.image}}.jpg">
+            <div class="cell-info">
+              <span>{{leave.name}}</span>
+            </div>    
+                
+          </div>
+    </carousel>
+</div>
+
+<!-- ABUTE US -->
+
+<div class="abuteus">
+
+<h1> من نحن  </h1>
+<mat-divider></mat-divider>
+
+<div class="abute" >
+  <img src="assets/images/frutis/33.webp" alt="">
+  <div class="par">
+    <!-- <p>We are the Farts team, our place in Damascus. Create this platform in cooperation with
+       the Syrian Trade Corporation in order<br> to facilitate the citizen to order his home products
+       of vegetables and fruits without wasting time and effort and at<br> reasonable prices with the 
+       possibility of delivering these products to the required place and we are looking forward in
+       the<br> future to adding all the products that may be The house needs it, and so we have contributed
+       to solving <br>some of the problems in our community and we made it easy for you to get all your products
+        without <br>queuing for hours in order to secure your requirements. </p> -->
+        <p>
+نحن فريق فروتس مكاننا في دمشق , تم إنشاء هذه المنصة بالتعاون مع المؤسسة التجارية السورية 
+للتسهيل على المواطن طلب منتجاته
+ المنزلية من الخضار والفواكه دون إضاعة الوقت والجهد لجلب المنتجات مع معرفة الأسعار الخاصة بهذه المنتجات
+  وإمكانية توصيل هذه المنتجات للمكان المطلوب ونتطلع في المستقبل لإضافة جميع المنتجات التي يحتاجهاالمنزل ، ولذا فقد ساهمنا في حل 
+بعض المشاكل في مجتمعنا وجعلنا من السهل عليك الحصول على جميع المنتجات الخاصة بك دون
+الانتظار لساعات من أجل تأمين متطلباتك
+        </p>
+  </div>
+</div>
+</div>
+
+<!-- contact us -->
+<div class="contactus">
+  <h1> تواصل معنا </h1>
+  <mat-divider></mat-divider>
+  <div class="form">
+    <mat-form-field appearance="fill">
+       <input  matInput placeholder="الاسم الكامل">
+     </mat-form-field>
+     <br>
+     <mat-form-field appearance="fill">
+     <input  matInput placeholder="عنوان الإيميل"[formControl]="email" required>
+     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+   </mat-form-field>
+     <mat-form-field  class="messag" appearance="fill">
+       <textarea rows="6"   matInput  placeholder="رسالتك"></textarea>
+     </mat-form-field>
+     <br>
+     <button class="send" >SEND MESSAGE</button>
+  </div>   
+</div> 

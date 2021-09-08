@@ -1,0 +1,108 @@
+<!-- all product -->
+<div id="academy-courses" class="page-layout simple">
+
+  <!-- HEADER -->
+  <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
+
+      <div class="hero-text">
+          <h1 >
+             معرض المنتجات
+          </h1>
+          <h3>
+             سيعرفك معرضنا على جميع أصناف الخضار والفواكه لتتمكن من الشراء وانت راض ولتثق بنا
+          </h3>
+      </div>
+
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content p-24">
+
+      <div fxLayout="column" fxLayoutAlign="center">
+
+          <div class="filters" fxLayout="column" fxLayoutAlign="center center"
+               fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+
+              <mat-form-field appearance="outline" floatLabel="always" class="course-search">
+                  <mat-label>بحث عن منتج</mat-label>
+                  <input matInput placeholder="....ابحث عن منتج">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="category-selector">
+                  <mat-label>الفئة</mat-label>
+                  <mat-select
+                      > 
+                      <mat-option [value]="'all'">
+                          الكل
+                      </mat-option>
+                      <!-- <mat-option *ngFor="let categ of categories$"  
+                                [routerLink]="" 
+                                [queryParams]="{category: categ.label}" >
+                                 {{ categ.label }}
+                      </mat-option> -->
+                      <mat-option value="frutis">
+                        فواكه
+                    </mat-option>
+                    <mat-option value="vegtables">
+                      خضار
+                    </mat-option >
+                    <mat-option value="leaves">
+                      ورقيات
+                    </mat-option>
+                  </mat-select>
+              </mat-form-field>
+
+          </div>
+
+          <div class="Product">    
+
+                <!-- CARD 13 -->
+                <div class="card" *ngFor="let product of products">
+                  <div class="fuse-card variable-width">
+            
+                    <div class="position-relative" >
+                        <img [src]="product.image">
+                          <div class="namepro">
+                         
+                        </div>
+                    </div>
+    
+                    <div class="title-price" style="padding: 0 10px;">
+                     
+                      <span> {{product.price}}<span>ل.س</span>
+                      
+                    </span>
+                    <span>   {{product.productname}}</span>
+                    </div>
+                       
+      
+                    <div class="px-16 py-4" fxLayout="column" fxLayoutAlign="center center">
+                      
+                      <input type="number" class="amount" placeholder="Amount(kg)" #amount>
+
+                       
+
+                        <div class="actions">
+                          <button mat-button (click)="Addtocart(amount.value, product.id,product.productname,product.price)">
+                            إضافة إلى السلة
+                          </button>
+                          
+                          <button mat-icon-button aria-label="add to favorites" (click)="myFav()">
+                            <mat-icon> favorite_border</mat-icon>
+                        </button> 
+                        </div>
+                       
+                    </div>
+      
+                </div>
+                 
+              </div>
+              <!-- / CARD 13 -->
+            </div>
+          
+            <!-- button view  more -->
+          <div class="view">
+              <button mat-button (click)="getByCategory()">عرض المزيد</button>
+            </div>
+      </div>

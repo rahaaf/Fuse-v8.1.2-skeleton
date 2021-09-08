@@ -1,0 +1,115 @@
+<mat-table #table [dataSource]="dataSource"
+           [@animateStagger]="{value:'50'}">
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="checkbox">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let contact">
+            <mat-checkbox [(ngModel)]="checkboxes[contact.uid]" (ngModelChange)="onSelectedChange(contact.uid)"
+                          (click)="$event.stopPropagation()">
+            </mat-checkbox>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Avatar Column -->
+    <ng-container matColumnDef="photoURL">
+        <mat-header-cell *matHeaderCellDef>صورتك</mat-header-cell>
+        <mat-cell *matCellDef="let contact">
+            <img class="photoURL" *ngIf="contact.photoURL" [alt]="contact.displayName"
+                 [src]="contact.photoURL"/>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="displayName">
+        <mat-header-cell *matHeaderCellDef>الاسم</mat-header-cell>
+        <mat-cell *matCellDef="let contact">
+            <p class="text-truncate font-weight-600">{{contact.displayName}} {{contact.lastName}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>الايميل</mat-header-cell>
+        <mat-cell *matCellDef="let contact" fxHide fxShow.gt-sm>
+            <p class="email text-truncate">
+                {{contact.email}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Phone Column -->
+    <ng-container matColumnDef="phoneNumber">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>رقم الهاتف</mat-header-cell>
+        <mat-cell *matCellDef="let contact" fxHide fxShow.gt-md>
+            <p class="phoneNumber text-truncate">
+                {{contact.phoneNumber}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Job Title Column
+    <ng-container matColumnDef="jobTitle">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-lg>Job title</mat-header-cell>
+        <mat-cell *matCellDef="let contact" fxHide fxShow.gt-lg>
+            <p class="job-title text-truncate">
+                {{contact.jobTitle}}
+            </p>
+        </mat-cell>
+    </ng-container> -->
+
+    <!-- Company Column -->
+    <ng-container matColumnDef="company">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-lg>اسم المؤسسة</mat-header-cell>
+        <mat-cell *matCellDef="let contact" fxHide fxShow.gt-lg>
+            <p class="company text-truncate">
+                {{contact.company}}
+            </p>
+        </mat-cell>
+    </ng-container>
+    <!-- Company Column -->
+    <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-lg>نوع المستخدم</mat-header-cell>
+        <mat-cell *matCellDef="let contact" fxHide fxShow.gt-lg>
+            <p class="type text-truncate">
+                {{contact.type}}
+            </p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Buttons Column -->
+    <ng-container matColumnDef="buttons">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let contact">
+            <div fxFlex="row" fxLayoutAlign="end center">
+                <button mat-icon-button (click)="$event.stopPropagation();toggleUserType(contact.uid)" aria-label="Toggle star">
+                    <mat-icon class="amber-fg" *ngIf="user.includes(contact.uid)">star</mat-icon>
+                    <mat-icon class="secondary-text" *ngIf="!user.includes(contact.uid)">star_border</mat-icon>
+                </button>
+
+                <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
+                        (click)="$event.stopPropagation();">
+                    <mat-icon class="secondary-text">more_vert</mat-icon>
+                </button>
+
+                <mat-menu #moreMenu="matMenu">
+                    <button mat-menu-item aria-label="remove" (click)="deleteContact(contact)">
+                        <mat-icon>delete</mat-icon>
+                        <span>حذف</span>
+                    </button>
+                </mat-menu>
+            </div>
+
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let contact; columns:displayedColumns;"
+             class="contact"
+             (click)="editContact(contact)"
+             [ngClass]="{'accent-50':checkboxes[contact.uid]}"
+             matRipple
+             [@animate]="{value:'*',params:{y:'100%'}}">
+    </mat-row>
+</mat-table>
+
+

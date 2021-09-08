@@ -1,0 +1,52 @@
+<mat-drawer-container class="example-container" autosize dir="rtl">
+    <mat-drawer #drawer class="example-sidenav" [opened]="true" mode="side">
+        <div class="user-info">
+            <img src="../../../../assets/images/user-defult.png" alt="" />
+
+            <h1>{{(user | async ).displayName}}</h1>
+            <span [ngSwitch]="(user | async ).type">
+            <p *ngSwitchCase="0">
+              مسؤول  النظام
+            </p>
+            <p *ngSwitchCase="1">
+              موظف توصيل
+            </p>
+            <p *ngSwitchCase="2">
+            مدير متجر
+            </p>
+           
+            <p *ngSwitchDefault>
+            
+            </p>
+            </span>
+            
+        </div>
+        <mat-divider>
+        </mat-divider>
+        <div class="nav">
+            <div class="nav-item" routerLink="e-commerce/products">
+                <a class="nav-link"> <mat-icon>inventory_2</mat-icon> المتجات </a>
+                
+            </div>
+            <div class="nav-item" routerLink="e-commerce/orders">
+                <a class="nav-link"> <mat-icon>add_task</mat-icon> طلباتي </a>
+            </div>
+
+            <div class="nav-item" routerLink="users">
+                <a class="nav-link">
+                    <mat-icon>peoples</mat-icon> المستخدمين
+                </a>
+            </div>
+            <div class="nav-item" routerLink="store/stors">
+                <a class="nav-link"> <mat-icon>store</mat-icon> المتاجر </a>
+            </div>
+            <div class="nav-item" routerLink="blogs/bloge">
+                <a class="nav-link"> <mat-icon>store</mat-icon> المقالات </a>
+            </div>
+        </div>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <router-outlet></router-outlet>
+    </div>
+</mat-drawer-container>

@@ -1,0 +1,20 @@
+<div class="contactus">
+    <h1> تواصل معنا </h1>
+    <mat-divider></mat-divider>
+
+    <div class="form">
+      <mat-form-field appearance="fill">
+         <input  matInput placeholder="الاسم الكامل">
+       </mat-form-field>
+       <br>
+       <mat-form-field appearance="fill">
+       <input  matInput placeholder="عنوان الإيميل"[formControl]="email" required>
+       <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+     </mat-form-field>
+       <mat-form-field  class="messag" appearance="fill">
+         <textarea rows="6"   matInput  placeholder="رسالتك"></textarea>
+       </mat-form-field>
+       <br>
+       <button class="send" >SEND MESSAGE</button>
+    </div>   
+  </div>

@@ -1,0 +1,135 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{dialogTitle}}</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+
+        <mat-toolbar-row class="toolbar-bottom py-16" fxLayout="column" fxLayoutAlign="center center">
+            <img [src]="contact.photoURL" class="avatar contact-avatar huge m-0"
+                 [alt]="contact.displayName"/>
+            <div class="contact-name mt-8">{{contact.displayName}} {{contact.lastName}}</div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 pb-0 m-0" fusePerfectScrollbar>
+
+        <form [formGroup]="contactForm">
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label> الاسم الأول</mat-label>
+                    <mat-icon matSuffix class="secondary-text">account_circleircle</mat-icon>
+                    <input name="displayName" formControlName="displayName" matInput required>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>الاسم الأخير</mat-label>
+                    <mat-icon matSuffix class="secondary-text">account_circleircle</mat-icon>
+                    <input name="lastName" formControlName="lastName" matInput>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>صورتك</mat-label>
+                    <mat-icon matSuffix class="secondary-text">image</mat-icon>
+                    <input name="photoURL" formControlName="photoURL" matInput>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>رقم الهاتف</mat-label>
+                    <mat-icon matSuffix class="secondary-text">phone</mat-icon>
+                    <input formControlName="phoneNumber" matInput>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>الإيميل</mat-label>
+                    <mat-icon matSuffix class="secondary-text">email</mat-icon>
+                    <input name="email" formControlName="email" matInput type="email">
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>اسم المؤسسة</mat-label>
+                    <mat-icon matSuffix class="secondary-text">domain</mat-icon>
+                    <input name="company" formControlName="company" matInput>
+                </mat-form-field>
+            </div>
+
+            <!-- <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Job title</mat-label>
+                    <mat-icon matSuffix class="secondary-text">work</mat-icon>
+                    <input name="jobTitle" formControlName="jobTitle" matInput>
+                </mat-form-field>
+            </div> -->
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>تاريخ الميلاد</mat-label>
+                    <input matInput [matDatepicker]="birthdayDatePicker" name="birthday" formControlName="birthday">
+                    <mat-datepicker-toggle matSuffix [for]="birthdayDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #birthdayDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>العنوان </mat-label>
+                    <mat-icon matSuffix class="secondary-text">home</mat-icon>
+                    <input name="address" formControlName="address" matInput>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" class="textarea-wrapper" fxLayoutAlign="start start">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>نوع المستخدم</mat-label>
+                    <input name="type" formControlName="type" matInput >
+                </mat-form-field>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+        <button *ngIf="action === 'edit'"
+                mat-button
+                class="mr-8"
+                (click)="matDialogRef.close(['delete',addTowUser()])"
+                aria-label="Delete"
+                matTooltip="Delete">
+            حذف
+        </button>
+
+        <button *ngIf="action !== 'edit'"
+                mat-button
+                class="save-button"
+                (click)="matDialogRef.close(addTowUser())"
+                [disabled]="contactForm.invalid"
+                aria-label="SAVE">
+            إضافة
+        </button>
+
+        <button *ngIf="action === 'edit'"
+                mat-button
+                class="save-button"
+                (click)="matDialogRef.close(['save',addTowUser()])"
+                [disabled]="contactForm.invalid"
+                aria-label="SAVE">
+            حفظ
+        </button>
+
+    </div>
+</div>

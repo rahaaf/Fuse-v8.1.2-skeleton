@@ -1,0 +1,39 @@
+<mat-drawer-container class="example-container" autosize dir="rtl">
+    <mat-drawer #drawer class="example-sidenav" [opened]="true" mode="side">
+        <div class="user-info">
+            <div class="user-info">
+                <img src="../../../../assets/images/user-defult.png" alt="" />
+    
+                <h1>{{(user | async ).displayName}}</h1>
+                <span [ngSwitch]="(user | async ).type">
+                <p *ngSwitchCase="0">
+                  مسؤول  النظام
+                </p>
+                <p *ngSwitchCase="1">
+                  موظف توصيل
+                </p>
+                <p *ngSwitchCase="2">
+                مدير متجر
+                </p>
+               
+                <p *ngSwitchDefault>
+                
+                </p>
+                </span>
+                
+            </div> 
+        </div>
+        <div class="nav">
+            <div class="nav-item" routerLink="e-commerce/orders">
+               <a class="nav-link">   <mat-icon>inventory_2</mat-icon>  طلباتي </a>
+            </div>
+            <div class="nav-item" routerLink="e-commerce/myfavorite">
+               <a class="nav-link">   <mat-icon>favorite</mat-icon> مفضلتي </a>
+            </div>
+        </div>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <router-outlet></router-outlet>
+    </div>
+</mat-drawer-container>

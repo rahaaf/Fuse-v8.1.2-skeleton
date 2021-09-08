@@ -1,0 +1,43 @@
+<div class="sidebar-content">
+
+    <div class="card">
+
+        
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content py-16" fusePerfectScrollbar>
+
+            <div class="nav material2">
+
+                <div class="nav-item" aria-label="inbox">
+                    <a class="nav-link" matRipple (click)="changeFilter('all')"
+                       [ngClass]="{'active accent':filterBy ==='all'}">
+                        <span class="title">كل المستخدمين</span>
+                    </a>
+                </div>
+
+                <div class="nav-item" aria-label="Ownerstor" (click)="changeFilter('Ownerstor')">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='Ownerstor'}">
+                        <div class="title">أصحاب المتاجر</div>
+                    </a>
+                </div>
+
+                <div class="nav-item" aria-label="Usernormal" (click)="changeFilter('Usernormal')">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='Usernormal'}">
+                        <div class="title">المستهلكين</div>
+                    </a>
+                </div>
+
+                <div class="nav-item" aria-label="Delevary" (click)="changeFilter('Delevary')">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='Delevary'}">
+                        <div class="title">عمال التوصيل</div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- / SIDEBAR CONTENT -->

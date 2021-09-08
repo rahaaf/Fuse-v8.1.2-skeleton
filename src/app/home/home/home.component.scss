@@ -1,0 +1,198 @@
+@import "src/@fuse/scss/fuse";
+
+:host{
+    width:100%;
+}
+
+// carousel *********************
+
+::ng-deep .carousel-cells .carousel-cell img {
+
+    object-fit:cover !important; 
+   }
+
+carousel{
+    
+    .carousel-cell{
+        .car{
+           height:90% !important;
+        }
+    }
+}
+
+
+.vegtable{
+    h1{
+     color: #FF9F68;
+     font-size: 30px;
+     margin-left:633px;
+     margin-bottom: 50px;
+    }
+ 
+ }
+ .caro{
+    
+     .carousel-cell{
+         img{
+            height:75% !important;
+            width: 77%;
+            margin-bottom:18px;
+            border-radius: 50%;
+
+         }
+         .cell-info{
+            display: flex;
+            align-content: center;
+            padding: 0 65px;
+            font-size: 18px;
+            
+         }
+      
+         .px-16{
+            text-align: center;
+            mat-icon{
+               color: #FF9F68;
+               font-size: 28px;
+
+            }
+        }
+        
+     }
+}
+.Frutis{
+    h1{
+     color: #FF9F68;
+     font-size: 30px;
+     margin-left:630px;
+     margin-bottom: 50px;
+    }
+  
+ }
+ .leaves{
+    h1{
+     color: #FF9F68;
+     font-size: 30px;
+     margin-left:630px;
+     margin-bottom: 50px;
+    }
+  
+ }
+ .v{
+         margin-bottom:90px;
+
+ }
+ .f{
+    margin-bottom: 90px;
+
+}
+.l{
+    margin-bottom: 90px;
+
+}
+ 
+
+
+// Abute Us 
+
+.abuteus {
+     
+    h1{
+        text-align: center;
+        font-size:30px;
+        color:#FF9F68;
+        margin-bottom:10px;
+        font-weight: bold;
+    }
+    mat-divider{
+        width:145px;
+        margin-left:600px;
+        background-color: #FF9F68;
+        margin-bottom:50px;
+    }
+    .abute{
+        img{
+            margin-left:50px;
+        }
+        .par{
+            font-size:22px;
+            text-align: center;
+            line-height:35px;
+            letter-spacing:1.1px;
+            width: 75%;
+            margin: auto; 
+        }
+    }
+   
+
+}      
+// contact us
+
+.contactus{
+    margin-top: 55px !important;
+    background-color: rgb(249, 249, 249);
+    h1{
+        padding-top:70px;
+        text-align: center;
+        font-size:30px;
+        color:#FF9F68;
+        margin-bottom:10px;
+        font-weight: bold; 
+    }
+    mat-divider{
+        width:155px;
+        margin-left:600px;
+        background-color: #FF9F68;
+        margin-bottom:50px;
+    }
+    .form{
+        text-align: center;
+        margin-top:25px;
+        margin-left:60px;
+        
+    }
+    .mat-form-field{
+        width:55%;
+        padding-bottom:10px; 
+        margin-left:10px;
+        border: 0 solid white;
+        text-align: right;
+    
+    }
+    
+   
+    .mat-form-field.messag{
+        width:55%;
+        font-size: 14px;
+        
+    }
+  
+    .form .send{
+        padding:10px;
+        background-color:#FF9F68;
+        border-radius: 30px;
+        border: 0 solid white;    
+        color:#fff;
+        margin-left:15px;
+        margin-bottom:100px;
+    }
+    
+    ::ng-deep  {
+        .mat-form-field-appearance-fill .mat-form-field-flex{
+            background-color:white;
+            border-radius: 50px !important;
+            padding:2px!important;
+            border: 1px solid #ff9f68;
+        }
+        .mat-form-field-underline{
+            display: none;
+        } 
+        .messag  .mat-form-field-flex{
+          
+            border-radius:20px !important;
+        }
+    }
+    
+    
+}
+ 
+

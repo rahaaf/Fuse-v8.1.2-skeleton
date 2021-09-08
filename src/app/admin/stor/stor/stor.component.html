@@ -1,0 +1,203 @@
+<div id="stor" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/store/stors'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <!-- <div class="stor-image mr-8 mr-sm-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    <img  [src]="stor.image">
+                    <img *ngIf="!stor.image" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                </div> -->
+
+                <div fxLayout="column" fxLayoutAlign="start start"
+                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType ==='edit'">
+                        {{stor.name}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        متجر جديد
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>تفاصيل المتجر</span>
+                    </div>
+                </div>
+            </div>
+            <!-- / APP TITLE -->
+
+            <button mat-raised-button
+                    class="save-stor-button"
+                    [disabled]="storForm.invalid"
+                    *ngIf="pageType ==='new'" (click)="addStor()">
+                <span>إضافة متجر</span>
+            </button>
+
+            <button mat-raised-button
+                    class="save-stor-button"
+                    [disabled]="storForm.invalid || storForm.pristine"
+                    *ngIf="pageType ==='edit'" (click)="saveStor()">
+                <span>حفظ المتجر</span>
+            </button>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <form name="storForm" [formGroup]="storForm" class="stor w-100-p" fxLayout="column" fxFlex>
+
+                    <mat-tab-group>
+
+                        <mat-tab label="Basic Info">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>صاحب المتجر</mat-label>
+                                    <input matInput placeholder="storNameOwner"
+                                           name="nameOwner"
+                                           formControlName="nameOwner"
+                                           required>
+                                </mat-form-field>
+
+                                <!-- <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>StorDescription</mat-label>
+                                    <textarea matInput placeholder="storDescription"
+                                              name="description"
+                                              formControlName="description"
+                                              rows="5">
+                                    </textarea>
+                                </mat-form-field> -->
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>عنوان المتجر</mat-label>
+                                    <input matInput placeholder="Address"
+                                           name="address"
+                                           formControlName="address"
+                                             >
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+
+                                    <mat-label>تصنيف المتجر</mat-label>
+
+                                    <mat-chip-list #tagList name="tags" formControlName="tags">
+
+                                        <mat-chip *ngFor="let tag of stor.tags"
+                                                  [removable]="true" (removed)="stor.removeTag(tag)">
+                                            {{tag}}
+                                            <mat-icon matChipRemove>إلغاء</mat-icon>
+                                        </mat-chip>
+
+                                        <input [matChipInputFor]="tagList"
+                                               [matChipInputAddOnBlur]="true"
+                                               (matChipInputTokenEnd)="stor.addTag($event)"/>
+
+                                    </mat-chip-list>
+
+                                </mat-form-field>
+
+                            </div>
+
+                        </mat-tab>
+
+                        <!-- <mat-tab label="storImages">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+                                <div fxLayout="rowwrap" fxLayoutAlign="start start">
+
+                                    <div *ngIf="stor.images.length === 0"
+                                         class="stor-image" fxlayout="row" fxLayoutAlign="center center">
+                                        <img class="media"
+                                             [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                                    </div>
+
+                                    <div *ngFor="let image of stor.images">
+                                        <div *ngIf="stor.images.length > 0"
+                                             class="stor-image" fxlayout="row" fxLayoutAlign="center center">
+                                            <img class="media" [src]="image.url">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </mat-tab> -->
+
+                        <mat-tab label="products">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>اسم المنتج</mat-label>
+                                    <input matInput placeholder="NameProduct"
+                                           name="nameproduct"
+                                           formControlName="nameproduct"
+                                           required>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label> سعر المنتج</mat-label>
+                                    <input matInput placeholder="Price"
+                                           name="price"
+                                           formControlName="price"
+                                           type="number">
+                                    <span matPrefix>$&nbsp;</span>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>كمية المنتج</mat-label>
+                                    <input matInput placeholder="Quantity"
+                                           name="quantity"
+                                           formControlName="quantity"
+                                              >
+                                </mat-form-field> 
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>وزن المنتج</mat-label>
+                                    <mat-select>
+                                      <mat-option placeholder="Weight" 
+                                      name="weight"
+                                      formControlName="weight" *ngFor="let type of types" [value]="type.value">
+                                      {{type.viewValue}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+
+                                <!-- <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Weight</mat-label>
+                                    <input matInput placeholder="Weight"
+                                           name="weight"
+                                           formControlName="weight"
+                                           >
+                                           <span matSuffix>kg</span>
+                                        </mat-form-field> -->
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+
+                </form>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>
